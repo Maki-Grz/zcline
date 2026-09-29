@@ -1,11 +1,6 @@
 /* Editor theme mapping */
 @theme {
-	--color-cline: #0070f2;
-	--color-sap-blue: #0070f2;
-	--color-sap-blue-hover: #0056b3;
-	--color-sap-gold: #e78c07;
-	--color-sap-teal: #008080;
-	--color-sap-slate: #556b82;
+	--color-cline: #9663f1;
 	--color-background: var(--vscode-sideBar-background);
 	--color-border: var(--vscode-focusBorder);
 	--color-border-panel: var(--vscode-panel-border);

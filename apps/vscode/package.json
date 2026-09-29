@@ -1,8 +1,8 @@
 {
 	"name": "zcline",
 	"displayName": "Zcline",
-	"description": "Autonomous coding assistant for SAP AI Core & SAP BTP, with enterprise SSO and AIU cost tracking.",
-	"version": "0.1.0-alpha.1",
+	"description": "Assistant autonome pour SAP AI Core & BTP (Custom Z-fork de Cline), avec suivi de coûts AIU et SSO Entreprise.",
+	"version": "4.1.10",
 	"icon": "assets/icons/icon.png",
 	"engines": {
 		"vscode": "^1.101.0"
@@ -54,45 +54,45 @@
 		"walkthroughs": [
 			{
 				"id": "ZclineWalkthrough",
-				"title": "Welcome to Zcline",
-				"description": "Your enterprise autonomous coding assistant powered by SAP AI Core and SAP BTP.",
+				"title": "Bienvenue sur Zcline",
+				"description": "Votre assistant de développement d'entreprise propulsé par SAP AI Core et SAP BTP.",
 				"steps": [
 					{
 						"id": "welcome",
-						"title": "Define goals with your SAP models",
-						"description": "Describe what you want to achieve. Zcline plans, explores, and generates code.",
+						"title": "Définissez un objectif avec vos modèles SAP",
+						"description": "Décrivez ce que vous souhaitez accomplir. L'assistant planifie, explore et génère le code.",
 						"media": {
 							"markdown": "walkthrough/step1.md"
 						}
 					},
 					{
 						"id": "learn",
-						"title": "Deep code understanding",
-						"description": "Zcline inspects project context and architecture to propose reliable, standard-compliant changes.",
+						"title": "Compréhension intelligente du code",
+						"description": "L'assistant analyse la structure et le contexte de votre code pour proposer des modifications fiables.",
 						"media": {
 							"markdown": "walkthrough/step2.md"
 						}
 					},
 					{
 						"id": "advanced-features",
-						"title": "SAP AI Core foundation models",
-						"description": "Leverage models deployed on your SAP AI Core tenant (Generative AI Hub) in full compliance.",
+						"title": "Modèles de fondation SAP AI Core",
+						"description": "Exploitez les modèles hébergés sur votre tenant SAP AI Core (Generative AI Hub) en toute conformité.",
 						"media": {
 							"markdown": "walkthrough/step3.md"
 						}
 					},
 					{
 						"id": "mcp",
-						"title": "Specialized tools with MCP",
-						"description": "Connect enterprise tools, databases, and APIs via the Model Context Protocol.",
+						"title": "Outils spécialisés avec MCP",
+						"description": "Connectez vos outils d'entreprise, bases de données et APIs via le Model Context Protocol.",
 						"media": {
 							"markdown": "walkthrough/step4.md"
 						}
 					},
 					{
 						"id": "getting-started",
-						"title": "Stay in full control at every step",
-						"description": "Review plans, inspect visual diffs, and approve actions with complete transparency.",
+						"title": "Gardez le contrôle à chaque étape",
+						"description": "Vérifiez les plans, examinez les diffs et approuvez chaque action sans effet de boîte noire.",
 						"media": {
 							"markdown": "walkthrough/step5.md"
 						},

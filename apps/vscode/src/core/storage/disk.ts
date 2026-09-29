@@ -130,33 +130,6 @@ export async function ensureSettingsDirectoryExists(): Promise<string> {
 	return getGlobalStorageDir("settings")
 }
 
-export const DEFAULT_SAP_MCP_SERVERS: Record<string, any> = {
-	"sap-cap-cds": {
-		command: "npx",
-		args: ["-y", "@cap-js/mcp-server"],
-		autoApprove: [],
-		disabled: false,
-	},
-	"sap-fiori": {
-		command: "npx",
-		args: ["-y", "@sap-ux/fiori-mcp-server@latest", "fiori-mcp"],
-		autoApprove: [],
-		disabled: false,
-	},
-	"sap-ui5": {
-		command: "npx",
-		args: ["-y", "@ui5/mcp-server"],
-		autoApprove: [],
-		disabled: false,
-	},
-	"sap-abap-adt": {
-		command: "npx",
-		args: ["-y", "@sap/abap-mcp-server"],
-		autoApprove: [],
-		disabled: true,
-	},
-}
-
 /**
  * Gets the path to the MCP settings file, creating it if it doesn't exist
  * @param settingsDirectoryPath Path to the settings directory
@@ -166,10 +139,7 @@ export async function getMcpSettingsFilePath(settingsDirectoryPath: string): Pro
 	const mcpSettingsFilePath = path.join(settingsDirectoryPath, GlobalFileNames.mcpSettings)
 	const tempPath = `${mcpSettingsFilePath}.tmp.${process.pid}.${Date.now()}.${Math.random().toString(36).slice(2)}`
 	try {
-		await fs.writeFile(tempPath, JSON.stringify({ mcpServers: DEFAULT_SAP_MCP_SERVERS }, null, 2), {
-			encoding: "utf8",
-			flag: "wx",
-		})
+		await fs.writeFile(tempPath, JSON.stringify({ mcpServers: {} }, null, 2), { encoding: "utf8", flag: "wx" })
 		// Hard-linking publishes the fully-written temp file without overwriting an
 		// existing settings file. EEXIST means another process won the create race.
 		await fs.link(tempPath, mcpSettingsFilePath)
