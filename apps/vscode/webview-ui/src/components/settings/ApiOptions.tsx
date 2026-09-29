@@ -48,9 +48,9 @@ export const ApiOptions = ({ showModelOptions, apiErrorMessage, modelIdErrorMess
 	return (
 		<div className="flex flex-col gap-3">
 			<div className="flex items-center gap-2 mb-1">
-				<span className="font-semibold text-sm">Fournisseur d'IA : SAP AI Core</span>
+				<span className="font-semibold text-sm">AI Provider: SAP AI Core</span>
 				<span className="text-xs px-2 py-0.5 rounded bg-(--vscode-badge-background) text-(--vscode-badge-foreground)">
-					Exclusif
+					Exclusive
 				</span>
 			</div>
 

@@ -5,96 +5,104 @@
 <h1 align="center">Zcline</h1>
 
 <p align="center">
-  <strong>L'assistant de code autonome propulsé exclusivement par SAP AI Core et SAP BTP</strong>
+  <strong>Autonomous AI coding assistant powered exclusively by SAP AI Core & SAP BTP</strong>
 </p>
 
 <p align="center">
-  Fork customisé de Cline conçu spécialement pour l'écosystème SAP (clin d'œil au namespace <code>Z*</code> des développements spécifiques SAP), avec intégration native SSO Entreprise (Microsoft Entra ID / SAP IAS), calcul des coûts en unités SAP AI (AIU) et support direct sans compte (BYOK).
+  A specialized enterprise fork of Cline designed for the SAP ecosystem (referencing the traditional SAP <code>Z*</code> customer namespace), featuring native Enterprise SSO (Microsoft Entra ID / SAP Cloud Identity Services), real-time SAP AI Units (AIU) cost tracking, pre-installed official SAP MCP servers, and direct no-account support (BYOK).
 </p>
 
 ---
 
-## 🚀 Fonctionnalités Clés
+## 🚀 Key Features
 
-### 1. 100% Dédié à SAP AI Core & SAP BTP
-- **Connecteur natif `@sap-ai-sdk/ai-api`** : Authentification OAuth2 automatique via XSUAA, renouvellement transparent des tokens et respect des politiques de proxy d'entreprise.
-- **Support des Foundation Models** : Exploitez Claude 3.5 Sonnet, GPT-4o, Mistral Large, Llama 3 et Gemini déployés sur votre propre tenant SAP AI Core (Generative AI Hub).
-- **Auto-découverte des déploiements** : Sélection automatique ou manuelle de votre déploiement actif et compatibilité complète avec le service d'orchestration SAP AI Core.
+### 1. 100% Dedicated to SAP AI Core & SAP BTP
+- **Native `@sap-ai-sdk/ai-api` connector**: Automatic OAuth2 authentication via XSUAA, transparent token refreshes, and corporate proxy support.
+- **Foundation Models**: Leverage Claude 3.5 / 3.7 Sonnet, GPT-4o, Mistral Large, Llama 3, and Gemini deployed on your own SAP AI Core tenant (Generative AI Hub).
+- **Deployment auto-discovery**: Automatically fetch active deployments with full compatibility for SAP AI Core orchestration mode.
 
-### 2. Double Mode d'Accès Entreprise
-- **Mode Sans Compte (BYOK - Bring Your Own Key)** :
-  - Saisie directe de votre Service Key SAP AI Core (format JSON ou clés individuelles).
-  - Idéal pour les consultants, freelances et environnements de test / sandbox.
-- **Mode SSO Entreprise** :
-  - **Microsoft Entra ID (Azure AD)** : Connexion native en un clic via l'API VS Code Authentication.
-  - **SAP Cloud Identity Services (IAS)** : Authentification sécurisée par annuaire d'entreprise.
-  - Aucune dépendance à un SaaS tiers externe : l'extension s'exécute entièrement sur votre poste et votre tenant SAP BTP.
+### 2. Pre-installed Official SAP MCP Servers
+Equipped out-of-the box with official Model Context Protocol (MCP) servers tailored for SAP development:
+- **`sap-cap-cds` (`@cap-js/mcp-server`)**: Inspect `.cds` models, query entities, generate OData services, and validate CAP logic.
+- **`sap-fiori` (`@sap-ux/fiori-mcp-server`)**: Generate Fiori pages, manage `manifest.json`, and manipulate XML/CDS UI annotations.
+- **`sap-ui5` (`@ui5/mcp-server`)**: Access UI5 control references, SAP Horizon guidelines, syntax validation, and UI5 linter.
+- **`sap-abap-adt` (`@sap/abap-mcp-server`)**: Bridge into ABAP Development Tools to inspect Data Dictionary structures, classes, and CDS views on On-Premise and BTP systems.
 
-### 3. Suivi FinOps des Coûts & Tokens en Temps Réel
-- Suivi direct de votre consommation par session et cumulée :
-  - **Tokens d'entrée**, **Tokens de sortie** et **Tokens mis en cache**.
-  - **Coût estimé total** (en \$ USD).
-  - **Unités SAP AI (AIU)** calculées automatiquement selon la grille de consommation SAP.
+### 3. Dual Enterprise Access Modes
+- **No-Account Mode (BYOK - Bring Your Own Key)**:
+  - Direct paste of your SAP AI Core Service Key JSON (or manual field entry).
+  - Credentials remain encrypted locally in VS Code `SecretStorage`.
+  - Ideal for consultants, freelancers, and sandbox testing.
+- **Enterprise SSO Mode**:
+  - **Microsoft Entra ID (Azure AD)**: One-click sign-in via the VS Code Authentication API.
+  - **SAP Cloud Identity Services (IAS)**: Secure enterprise directory federation.
+  - No external SaaS dependencies: runs entirely on your local machine and your SAP BTP tenant.
 
-### 4. Contrôle Humain & Sécurité Entreprise (Human-in-the-loop)
-- **Approbation systématique** de chaque modification de fichier via un visualiseur de diffs interactif.
-- **Validation manuelle** des commandes de terminal avant exécution.
-- **Support du Model Context Protocol (MCP)** pour étendre l'assistant avec vos sources de données d'entreprise (SAP HANA Cloud, APIs OData, etc.).
+### 4. Real-time FinOps & Cost Tracking
+- Live token consumption and cost breakdown:
+  - **Input Tokens**, **Output Tokens**, and **Cached Tokens**.
+  - **Estimated total cost** (in \$ USD).
+  - **SAP AI Units (AIU)** computed automatically per SAP consumption tables.
+
+### 5. Human-in-the-Loop & Enterprise Security
+- **Explicit approval** for each file modification with visual diff inspection.
+- **Manual confirmation** for terminal commands before execution.
+- **Enterprise MCP Support** to connect custom data sources (SAP HANA Cloud, OData APIs, internal microservices).
 
 ---
 
-## 🛠️ Développement & Compilation
+## 🛠️ Development & Build
 
-Le projet utilise **Bun 1.3.13** et **Node >= 22**.
+The project uses **Bun 1.3.13** and **Node >= 22**.
 
-### 1. Installation des dépendances
+### 1. Install dependencies
 ```bash
 bun install
 ```
 
-### 2. Compilation des SDKs
+### 2. Build SDK packages
 ```bash
 bun run build:sdk
 ```
 
-### 3. Compilation de l'extension VS Code (Webview + Extension)
+### 3. Build VS Code extension (Webview + Extension Host)
 ```bash
 bun run build:vscode
 ```
 
-### 4. Packaging en fichier `.vsix`
+### 4. Package into `.vsix`
 ```bash
 bun run package:vscode
 ```
-Le fichier généré sera disponible dans `apps/vscode/zcline-4.1.10.vsix`.
+The generated archive will be available in `apps/vscode/zcline-0.1.0-alpha.1.vsix`.
 
-### 5. Installer l'extension dans VS Code
+### 5. Install the extension in VS Code
 ```bash
-code --install-extension apps/vscode/zcline-4.1.10.vsix
+code --install-extension apps/vscode/zcline-0.1.0-alpha.1.vsix
 ```
 
 ---
 
-## 🧪 Tests Unitaires
+## 🧪 Unit Tests
 
 ```bash
-# Tests unitaires du connecteur SAP AI Core
+# Run unit tests for SDK packages
 bun --cwd sdk/packages/llms test
 
-# Tests unitaires de la Webview React
+# Run React webview unit tests
 cd apps/vscode/webview-ui && bun test
 ```
 
 ---
 
-## 🙏 Remerciements & Attribution
+## 🙏 Acknowledgements & Attribution
 
-Ce projet, **Zcline**, est une déclinaison d'entreprise spécialisée et un fork customisé basé sur le projet open-source remarquable **[Cline](https://github.com/cline/cline)**, distribué sous licence Apache-2.0.
+**Zcline** is an enterprise distribution and specialized fork built on the open-source **[Cline](https://github.com/cline/cline)** project (licensed under Apache-2.0).
 
-Nous exprimons toute notre gratitude à l'équipe et aux contributeurs de Cline pour avoir créé et partagé une architecture d'agent de codage aussi robuste, modulaire et performante.
+We extend our sincere gratitude to the Cline creators and community for building such an exceptional, modular agentic foundation.
 
 ---
 
-## 📄 Licence
+## 📄 License
 
-Ce projet est distribué sous la licence [Apache-2.0](LICENSE).
+This project is distributed under the [Apache-2.0](LICENSE) license.

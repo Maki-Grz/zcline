@@ -1,6 +1,6 @@
 import { setTimeout as setTimeoutPromise } from "node:timers/promises"
 import { sendMcpServersUpdate } from "@core/controller/mcp/subscribeToMcpServers"
-import { getMcpSettingsFilePath as getMcpSettingsFilePathHelper } from "@core/storage/disk"
+import { getMcpSettingsFilePath as getMcpSettingsFilePathHelper, DEFAULT_SAP_MCP_SERVERS } from "@core/storage/disk"
 import { StateManager } from "@core/storage/StateManager"
 import { UnauthorizedError } from "@modelcontextprotocol/sdk/client/auth.js"
 import { Client } from "@modelcontextprotocol/sdk/client/index.js"
@@ -202,10 +202,10 @@ export class McpHub {
 
 			let config: any
 
-			// Handle empty or minimal files silently - this is a valid state meaning "no MCP servers"
+			// Handle empty or minimal files silently - return pre-configured SAP MCP servers
 			const trimmedContent = content.trim()
 			if (!trimmedContent || trimmedContent === "{}" || trimmedContent === '{"mcpServers":{}}') {
-				return { mcpServers: {} }
+				return { mcpServers: DEFAULT_SAP_MCP_SERVERS }
 			}
 
 			// Parse JSON file content
@@ -368,14 +368,31 @@ export class McpHub {
 	}
 
 	private async initializeMcpServers(): Promise<void> {
-		const settings = await this.readAndValidateMcpSettingsFile()
+		let settings = await this.readAndValidateMcpSettingsFile()
 		if (settings) {
-			// Seed the watcher's baseline so the first post-startup write is
-			// compared against the current connection-relevant state, not undefined.
-			this.lastConnectionFingerprint = this.computeConnectionFingerprint(
-				settings.mcpServers as Record<string, McpServerConfig>,
-			)
-			await this.updateServerConnections(settings.mcpServers)
+			if (Object.keys(settings.mcpServers).length === 0) {
+				try {
+					const settingsPath = await this.getMcpSettingsFilePath()
+					await updateMcpSettingsFile(settingsPath, (current) => {
+						current.mcpServers = {
+							...DEFAULT_SAP_MCP_SERVERS,
+							...((current.mcpServers as Record<string, any>) || {}),
+						}
+						return current
+					})
+					settings = await this.readPostWriteMcpSettings()
+				} catch (err) {
+					Logger.error("Failed to seed default SAP MCP servers:", err)
+				}
+			}
+			if (settings) {
+				// Seed the watcher's baseline so the first post-startup write is
+				// compared against the current connection-relevant state, not undefined.
+				this.lastConnectionFingerprint = this.computeConnectionFingerprint(
+					settings.mcpServers as Record<string, McpServerConfig>,
+				)
+				await this.updateServerConnections(settings.mcpServers)
+			}
 		}
 	}
 

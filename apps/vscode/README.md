@@ -1,22 +1,22 @@
 # Zcline
 
-L'assistant de code autonome d'entreprise propulsé exclusivement par **SAP AI Core** et **SAP BTP** (Custom Z-fork de Cline).
+Autonomous enterprise coding assistant powered exclusively by **SAP AI Core** and **SAP BTP** (Custom Z-fork of Cline).
 
-## Fonctionnalités Clés
-- **100% Dédié à SAP AI Core** : Connecteur natif `@sap-ai-sdk/ai-api` avec gestion OAuth2/XSUAA et découverte automatique des déploiements.
-- **Double Mode d'Accès** : Mode Sans Compte (BYOK clé de service directe) et SSO Entreprise (Microsoft Entra ID / SAP Cloud Identity Services).
-- **Suivi des Coûts & Tokens** : Tokens In/Out/Cache, coûts estimés en USD et suivi en Unités SAP AI (AIU).
-- **Contrôle Humain en Boucle** : Approbation de chaque diff de code et de chaque commande de terminal.
-- **Support MCP** : Connexion à vos outils et bases de données d'entreprise via le Model Context Protocol.
+## Key Features
+- **100% Dedicated to SAP AI Core**: Native `@sap-ai-sdk/ai-api` connector with OAuth2/XSUAA management and automatic deployment discovery.
+- **Pre-installed Official SAP MCPs**: Native support for `@cap-js/mcp-server`, `@sap-ux/fiori-mcp-server`, `@ui5/mcp-server`, and `@sap/abap-mcp-server`.
+- **Dual Access Modes**: No-Account Mode (direct BYOK service key paste) and Enterprise SSO (Microsoft Entra ID / SAP Cloud Identity Services).
+- **Cost & Token Tracking**: Input/Output/Cache token counters, USD cost estimates, and SAP AI Units (AIU) metrics.
+- **Human-in-the-Loop**: Interactive diff approvals and terminal command authorizations.
 
 ## Installation
-Installez directement le fichier `.vsix` :
+Install directly from the generated `.vsix` file:
 ```bash
-code --install-extension zcline-4.1.10.vsix
+code --install-extension zcline-0.1.0-alpha.1.vsix
 ```
 
-## Remerciements & Attribution
-Ce projet, **Zcline**, est développé comme une adaptation d'entreprise basée sur le travail open-source de **[Cline](https://github.com/cline/cline)** (licence Apache-2.0). Nous remercions sincèrement l'équipe de Cline pour cette formidable fondation agentique.
+## Acknowledgements & Attribution
+**Zcline** is developed as an enterprise-specialized adaptation based on the open-source work of **[Cline](https://github.com/cline/cline)** (Apache-2.0 license). We sincerely thank the Cline team and contributors for this outstanding agentic engine.
 
-## Licence
+## License
 Apache-2.0

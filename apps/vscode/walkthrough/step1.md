@@ -1,5 +1,5 @@
-# Bien plus que de l'autocomplétion : Planification Agentique
+# Beyond Autocomplete: Agentic Planning
 
-**Zcline analyse votre demande, explore votre code et vous présente un plan limpide.**
+**Zcline analyzes your request, explores your code, and presents a clear plan.**
 
-Observez Zcline décomposer des tâches complexes, poser des questions de clarification et formaliser son approche. Vous comprenez le « pourquoi » avant toute modification de code, en parfait accord avec vos règles d'architecture.
+Watch Zcline break down complex tasks, ask clarifying questions, and structure its approach. You understand the "why" before any code changes happen, in alignment with your architectural rules.

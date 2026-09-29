@@ -1,5 +1,5 @@
-# Transparence & Contrôle Absolu
+# Full Transparency & Control
 
-**L'assistant opère avec une transparence totale : vous validez chaque modification et chaque commande.**
+**The assistant operates with total transparency: you review and approve every change.**
 
-Aucune modification n'est appliquée sans votre consentement. Examinez chaque plan, inspectez les diffs visuels et validez l'exécution des commandes en terminal. Suivez en direct votre consommation de tokens et d'unités SAP AI (AIU) directement depuis l'interface.
+No changes are applied without your consent. Inspect every plan, review visual diffs, and authorize terminal commands. Monitor your token consumption and SAP AI Units (AIU) directly from the interface.

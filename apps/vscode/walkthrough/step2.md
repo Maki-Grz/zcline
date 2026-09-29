@@ -1,5 +1,5 @@
-# Compréhension Approfondie du Projet
+# Deep Project Understanding
 
-**Zcline commence par une vue d'ensemble et explore précisément les fichiers pertinents.**
+**Zcline begins with the big picture and explores relevant files precisely.**
 
-Zcline intègre une intelligence architecturale native. Il analyse la structure globale de votre projet et effectue des explorations ciblées pour charger le contexte exact requis. Ses modifications s'intègrent naturellement à vos conventions d'équipe et à vos standards d'entreprise.
+Zcline includes native architectural awareness. It analyzes overall project structure and conducts targeted exploration to gather the exact context required. Changes fit seamlessly into your team conventions and enterprise guidelines.
